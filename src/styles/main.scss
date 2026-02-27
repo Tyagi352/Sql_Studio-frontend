@@ -1,0 +1,204 @@
+// CipherSQLStudio — main.scss
+// @use rules MUST come first in SCSS
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'reset';
+@use 'animations';
+
+// Google Fonts (must come after @use)
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+// ---- Global Utilities ----
+.container {
+    width: 100%;
+    padding: 0 $space-4;
+    margin: 0 auto;
+
+    @include respond-to(sm) {
+        padding: 0 $space-5;
+    }
+
+    @include respond-to(lg) {
+        max-width: $content-max-width;
+        padding: 0 $space-8;
+    }
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+// ---- Typography Utilities ----
+.text-gradient {
+    @include gradient-text;
+}
+
+.text-muted {
+    color: $color-text-muted;
+}
+
+.text-secondary {
+    color: $color-text-secondary;
+}
+
+.text-accent {
+    color: $color-accent;
+}
+
+.text-success {
+    color: $color-success;
+}
+
+.text-danger {
+    color: $color-danger;
+}
+
+.text-warning {
+    color: $color-warning;
+}
+
+.text-mono {
+    font-family: $font-family-mono;
+}
+
+// ---- Card ----
+.card {
+    @include glass-card;
+    padding: $space-6;
+    transition: $transition-normal;
+
+    &--elevated {
+        background: $color-bg-elevated;
+    }
+
+    &--hoverable:hover {
+        border-color: $color-border-active;
+        transform: translateY(-2px);
+        box-shadow: $shadow-lg, 0 0 20px $color-accent-glow;
+    }
+}
+
+// ---- Badge ----
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: $space-1 $space-3;
+    border-radius: $radius-full;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    &--easy {
+        background: $color-success-light;
+        color: $color-easy;
+    }
+
+    &--medium {
+        background: $color-warning-light;
+        color: $color-medium;
+    }
+
+    &--hard {
+        background: $color-danger-light;
+        color: $color-hard;
+    }
+
+    &--accent {
+        background: $color-accent-light;
+        color: $color-accent;
+    }
+
+    &--muted {
+        background: rgba(255, 255, 255, .06);
+        color: $color-text-muted;
+    }
+}
+
+// ---- Divider ----
+.divider {
+    width: 100%;
+    height: 1px;
+    background: $color-border;
+    margin: $space-6 0;
+}
+
+// ---- Spinner ----
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, .15);
+    border-top-color: $color-accent;
+    border-radius: $radius-full;
+    animation: spin 0.7s linear infinite;
+
+    &--lg {
+        width: 40px;
+        height: 40px;
+        border-width: 3px;
+    }
+}
+
+// ---- Skeleton Loader ----
+.skeleton {
+    background: linear-gradient(90deg, $color-bg-elevated 25%, $color-bg-card 50%, $color-bg-elevated 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease infinite;
+    border-radius: $radius-md;
+}
+
+// ---- Scrollbar ----
+* {
+    @include custom-scrollbar;
+}
+
+// ---- Empty State ----
+.empty-state {
+    @include flex-center;
+    flex-direction: column;
+    gap: $space-4;
+    padding: $space-16 $space-8;
+    color: $color-text-muted;
+    text-align: center;
+
+    .empty-state__icon {
+        font-size: 3rem;
+        opacity: 0.4;
+    }
+}
+
+// ---- Status Pills ----
+.status-pill {
+    @include flex-center;
+    gap: $space-2;
+    padding: $space-2 $space-4;
+    border-radius: $radius-full;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+
+    &--passed {
+        background: $color-success-light;
+        color: $color-success;
+        border: 1px solid rgba(16, 185, 129, .3);
+    }
+
+    &--failed {
+        background: $color-danger-light;
+        color: $color-danger;
+        border: 1px solid rgba(239, 68, 68, .3);
+    }
+
+    &--running {
+        background: $color-accent-light;
+        color: $color-accent;
+        border: 1px solid $color-border-active;
+    }
+}

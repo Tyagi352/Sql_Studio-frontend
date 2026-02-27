@@ -1,0 +1,131 @@
+@use 'variables' as *;
+
+// Respond-to mixin (mobile-first)
+@mixin respond-to($breakpoint) {
+    @if $breakpoint ==sm {
+        @media (min-width: #{$bp-sm}) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint ==md {
+        @media (min-width: #{$bp-md}) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint ==lg {
+        @media (min-width: #{$bp-lg}) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint ==xl {
+        @media (min-width: #{$bp-xl}) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint ==2xl {
+        @media (min-width: #{$bp-2xl}) {
+            @content;
+        }
+    }
+}
+
+// Flex utilities
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin flex-start {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+// Card glassmorphism
+@mixin glass-card($bg: $color-bg-card) {
+    background: $bg;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+    backdrop-filter: blur(10px);
+}
+
+// Text truncate
+@mixin truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// Gradient text
+@mixin gradient-text {
+    background: linear-gradient(135deg, $color-accent, $color-accent-hover);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+// Focus ring
+@mixin focus-ring {
+    outline: none;
+    box-shadow: 0 0 0 3px $color-accent-glow;
+}
+
+// Scrollbar styling
+@mixin custom-scrollbar {
+    &::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $color-bg-elevated;
+        border-radius: $radius-full;
+
+        &:hover {
+            background: $color-accent;
+        }
+    }
+}
+
+// Button base
+@mixin btn-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $space-2;
+    padding: $space-3 $space-6;
+    border: none;
+    border-radius: $radius-lg;
+    font-family: $font-family-base;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    cursor: pointer;
+    transition: $transition-fast;
+    text-decoration: none;
+    white-space: nowrap;
+    user-select: none;
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    &:focus-visible {
+        @include focus-ring;
+    }
+}
