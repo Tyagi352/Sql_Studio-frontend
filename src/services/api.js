@@ -57,4 +57,3 @@ export const submissionService = {
 };
 
 export default api;
-S
