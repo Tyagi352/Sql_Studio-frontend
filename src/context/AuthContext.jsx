@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
     if (token && savedUser) {
       try {
         setUser(JSON.parse(savedUser));
-      } catch (_) {}
+      } catch (_) { }
     }
     setLoading(false);
   }, []);

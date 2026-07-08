@@ -15,19 +15,19 @@ import '../styles/components/_practice.scss';
 const CIPHER_THEME = {
   base: 'vs-dark', inherit: true,
   rules: [
-    { token: 'keyword',    foreground: '818cf8', fontStyle: 'bold' },
-    { token: 'string',     foreground: '34d399' },
-    { token: 'number',     foreground: 'fb923c' },
-    { token: 'comment',    foreground: '4b5563', fontStyle: 'italic' },
+    { token: 'keyword', foreground: '818cf8', fontStyle: 'bold' },
+    { token: 'string', foreground: '34d399' },
+    { token: 'number', foreground: 'fb923c' },
+    { token: 'comment', foreground: '4b5563', fontStyle: 'italic' },
     { token: 'identifier', foreground: 'e2e8f0' },
   ],
   colors: {
-    'editor.background':             '#0e1422',
-    'editor.foreground':             '#f1f5f9',
-    'editor.lineHighlightBackground':'#141928',
-    'editor.selectionBackground':    '#6366f130',
-    'editorCursor.foreground':       '#6366f1',
-    'editorLineNumber.foreground':   '#374151',
+    'editor.background': '#0e1422',
+    'editor.foreground': '#f1f5f9',
+    'editor.lineHighlightBackground': '#141928',
+    'editor.selectionBackground': '#6366f130',
+    'editorCursor.foreground': '#6366f1',
+    'editorLineNumber.foreground': '#374151',
     'editorLineNumber.activeForeground': '#6366f1',
   },
 };
@@ -75,11 +75,11 @@ function LeftPanelContent({ tab, assignment, sampleData, loadingSample }) {
         <div className="assignment-info__badges">
           <span className={`badge badge--${assignment.difficulty}`}>{assignment.difficulty}</span>
           <span className="badge badge--points">⚡ {assignment.points} pts</span>
-          {assignment.completed && <span className="badge badge--accent"><CheckCircle2 size={12}/> Completed</span>}
+          {assignment.completed && <span className="badge badge--accent"><CheckCircle2 size={12} /> Completed</span>}
         </div>
-        
+
         <h2 className="tab-content__title">{assignment.title}</h2>
-        
+
         <div className="tab-content__section">
           <div className="tab-content__section-label">Task Description</div>
           <p className="tab-content__description">{assignment.description}</p>
@@ -125,11 +125,11 @@ function LeftPanelContent({ tab, assignment, sampleData, loadingSample }) {
         <p style={{ textAlign: 'center', color: '#64748b', fontSize: '0.85rem' }}>Loading database tables…</p>
       </div>
     );
-    
+
     if (!sampleData || sampleData.length === 0) return (
       <div className="tab-content">
         <div className="empty-state">
-           <Database size={32} style={{ opacity: 0.2, marginBottom: '1rem' }} />
+          <Database size={32} style={{ opacity: 0.2, marginBottom: '1rem' }} />
           <p>No sample data available for this assignment.</p>
         </div>
       </div>
@@ -323,16 +323,16 @@ export default function Practice() {
     try {
       const res = await executionService.getHint({ assignmentId: id, query, hintIndex: nextIdx });
       console.log("HINT RESPONSE:", res.data); // ADDED FOR DEBUGGING
-      
+
       const hintObj = res.data;
       const hintText = hintObj.hint || (typeof hintObj === 'string' ? hintObj : JSON.stringify(hintObj));
-      
+
       setQuery(prev => {
         const text = prev.trim();
         const hintComment = `\n\n-- 💡 AI Hint #${nextIdx + 1}:\n-- ${hintText.split('\n').join('\n-- ')}\n`;
         return text ? text + hintComment : hintComment.trimStart();
       });
-      
+
       setCurrentHint(hintObj);
       setHintIndex(nextIdx);
     } catch (err) {
@@ -383,9 +383,9 @@ export default function Practice() {
 
   // ── Tabs config ──────────────────────────────────────────────────────
   const tabs = [
-    { id: 'question', label: 'Question',    icon: <FileText size={14} /> },
-    { id: 'data',     label: 'Sample Data', icon: <List size={14} /> },
-    { id: 'schema',   label: 'Schema',      icon: <Database size={14} /> },
+    { id: 'question', label: 'Question', icon: <FileText size={14} /> },
+    { id: 'data', label: 'Sample Data', icon: <List size={14} /> },
+    { id: 'schema', label: 'Schema', icon: <Database size={14} /> },
   ];
 
   if (loading) return (
@@ -479,17 +479,17 @@ export default function Practice() {
                   )}
                 </div>
               )}
-              
+
               {/* AI Hint Button moved to Toolbar */}
               {!passed && (
-                <button 
-                  className="btn-ghost" 
+                <button
+                  className="btn-ghost"
                   style={{ color: '#fbbf24', borderColor: 'rgba(251, 191, 36, 0.3)' }}
-                  onClick={fetchHint} 
+                  onClick={fetchHint}
                   disabled={fetchingHint || hintsExhausted}
                   title={hintsExhausted ? "All hints used" : "Get AI Hint directly in editor"}
                 >
-                  {fetchingHint ? <span className="spinner spinner--sm" style={{borderColor: '#fbbf24', borderRightColor: 'transparent'}}></span> : <Sparkles size={14} />} 
+                  {fetchingHint ? <span className="spinner spinner--sm" style={{ borderColor: '#fbbf24', borderRightColor: 'transparent' }}></span> : <Sparkles size={14} />}
                   {fetchingHint ? ' Thinking...' : hintsExhausted ? ' Hints Exhausted' : ' Context Hint'}
                 </button>
               )}

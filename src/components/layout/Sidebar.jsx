@@ -4,6 +4,11 @@ import { useAuth } from '../../context/AuthContext';
 import { LayoutDashboard, BookOpen, TrendingUp, Trophy, LogOut, Database } from 'lucide-react';
 import '../../styles/components/_sidebar.scss';
 
+
+
+
+
+
 const navItems = [
   { icon: LayoutDashboard, label: 'Dashboard', path: '/dashboard' },
   { icon: BookOpen, label: 'Assignments', path: '/assignments' },
@@ -56,7 +61,7 @@ export default function Sidebar() {
             <div className="user-avatar">{initials}</div>
             <div className="user-details">
               <div className="user-name">{user?.name || 'Student'}</div>
-              <div className="user-points">⚡ {user?.totalPoints || 0} pts</div>
+              <div className="user-points">{user?.totalPoints} pts</div>
             </div>
           </div>
           <button className="logout-btn" onClick={handleLogout} title="Logout">
