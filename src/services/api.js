@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE = import.meta.env.VITE_API_URL;
+const API_BASE = import.meta.env.VITE_API_URL || "https://sql-studio-backend-git-main-tyagi352s-projects.vercel.app";
 const api = axios.create({
     baseURL: API_BASE,
     headers: { 'Content-Type': 'application/json' },
@@ -31,9 +31,9 @@ api.interceptors.response.use(
 
 // --- Auth ---
 export const authService = {
-    register: (data) => api.post('/auth/register', data),
-    login: (data) => api.post('/auth/login', data),
-    getMe: () => api.get('/auth/me'),
+    register: (data) => api.post('/api/auth/register', data),
+    login: (data) => api.post('/api/auth/login', data),
+    getMe: () => api.get('/api/auth/me'),
 };
 
 // --- Assignments ---
