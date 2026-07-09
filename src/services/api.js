@@ -31,29 +31,29 @@ api.interceptors.response.use(
 
 // --- Auth ---
 export const authService = {
-    register: (data) => api.post('/api/auth/register', data),
-    login: (data) => api.post('/api/auth/login', data),
-    getMe: () => api.get('/api/auth/me'),
+    register: (data) => api.post('/auth/register', data),
+    login: (data) => api.post('/auth/login', data),
+    getMe: () => api.get('/auth/me'),
 };
 
 // --- Assignments ---
 export const assignmentService = {
-    getAll: (params) => api.get('/assignments', { params }),
-    getById: (id) => api.get(`/assignments/${id}`),
-    getSampleData: (id) => api.get(`/assignments/${id}/sample-data`),
+    getAll: (params) => api.get('/api/assignments', { params }),
+    getById: (id) => api.get(`/api/assignments/${id}`),
+    getSampleData: (id) => api.get(`/api/assignments/${id}/sample-data`),
 };
 
 // --- SQL Execution ---
 export const executionService = {
-    execute: (data) => api.post('/execute', data),
-    getHint: (data) => api.post('/execute/hint', data),
+    execute: (data) => api.post('/api/execute', data),
+    getHint: (data) => api.post('/api/execute/hint', data),
 };
 
 // --- Submissions ---
 export const submissionService = {
-    getMine: (params) => api.get('/submissions/me', { params }),
-    getProgress: () => api.get('/submissions/progress'),
-    getLeaderboard: () => api.get('/submissions/leaderboard'),
+    getMine: (params) => api.get('/api/submissions/me', { params }),
+    getProgress: () => api.get('/api/submissions/progress'),
+    getLeaderboard: () => api.get('/api/submissions/leaderboard'),
 };
 
 export default api;
