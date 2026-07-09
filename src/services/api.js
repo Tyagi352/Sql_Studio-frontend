@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE = import.meta.env.VITE_API_URL || "https://sql-studio-backend-git-main-tyagi352s-projects.vercel.app";
+const API_BASE = import.meta.env.VITE_API_URL || "https://sql-studio-backend-14ajyx7wg-tyagi352s-projects.vercel.app";
 const api = axios.create({
     baseURL: API_BASE,
     headers: { 'Content-Type': 'application/json' },
